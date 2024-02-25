@@ -1,5 +1,8 @@
-.task-tab::-webkit-scrollbar {
+#task-tab::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
+}
+.task-by-list::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -45,6 +48,7 @@ code {
   width: 70%;
   margin-top: 0px;
   height: 85vh;
+  padding: 0%;
   border: 2px black solid;
   border-left-width: 0px;
   list-style: none;
@@ -52,11 +56,9 @@ code {
   overflow-y: scroll;
 }
 #task-tab > li {
-  margin-left: -2em;
-  box-shadow: 10px 10px 10px rgba(47, 47, 47, 0.5);
+  box-shadow: 0px 10px 10px rgba(47, 47, 47, 0.5);
 }
 .task-header {
-  margin-left: 1em;
   display: flex;
   justify-content: space-between;
 }
@@ -73,7 +75,41 @@ code {
 }
 .task-list-open {
   animation: 0.2s ease-out openAnim;
-  height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  border-top: 2px solid #2f2f2f;
+  height: 10em;
+}
+.task-by-list {
+  list-style: none;
+  font-size: 0.6em;
+  height: 11em;
+  width: 100%;
+  margin-top: 1em;
+  overflow-y: scroll;
+}
+.task-by-list > li {
+  background-color: lightgreen;
+  width: 95%;
+  border: 2px solid #2f2f2f;
+  display: flex;
+  justify-content: space-between;
+}
+.task-list-by-section {
+  border-right: 2px solid #2f2f2f;
+  height: inherit;
+  width: 7.5em;
+}
+.task-list-by-section:last-child {
+  border-right: 0px;
+}
+.task-list-by-section > header {
+  margin: 0px;
+  text-align: center;
+  font-size: 0.6em;
+  font-weight: 600;
 }
 .task-list-close {
   animation: 0.2s ease-out closeAnim;

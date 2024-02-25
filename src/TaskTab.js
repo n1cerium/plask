@@ -1,5 +1,22 @@
 import { useEffect, useState } from "react";
 
+/**
+ * [
+ *  {
+ *    name: Task 1
+ *    status: Complete
+ *  },
+ *  {
+ *    name: Task 2
+ *    status: Complete
+ *  }
+ *  {
+ *    name: Task 3
+ *    status: Complete
+ *  }
+ * ]
+ *
+ */
 export default function TaskTab() {
   return (
     <ul id="task-tab">
@@ -38,7 +55,7 @@ function TaskDatesList() {
         <span onClick={handleOpenMain}>{isOpen ? "-" : "+"}</span>
       </header>
       {isRendered && (
-        <TaskList
+        <Tasks
           className={isOpen ? "task-list-open" : "task-list-close"}
           isOpen={isOpen}
         />
@@ -46,6 +63,43 @@ function TaskDatesList() {
     </li>
   );
 }
-function TaskList({ className, isOpen }) {
-  return <main className={className}>{isOpen ? "Main Content" : ""}</main>;
+function Tasks({ className, isOpen }) {
+  return <main className={className}>{isOpen && <TaskListByList />}</main>;
+}
+
+//TaskListByList meaning that all task are placed in unordered list
+function TaskListByList() {
+  return (
+    <ul className="task-by-list">
+      <li>
+        <span>Task 1</span>
+        <span>Completed</span>
+      </li>
+      <li>
+        <span>Task 2</span>
+        <span>Completed</span>
+      </li>
+      <li>
+        <span>Task 3</span>
+        <span>Completed</span>
+      </li>
+      <li>
+        <span>Task 4</span>
+        <span>Completed</span>
+      </li>
+    </ul>
+  );
+}
+
+function TaskListBySection({ taskName }) {
+  return (
+    <section className="task-list-by-section">
+      <header>{taskName}</header>
+      <ul>
+        <li>Task 1</li>
+        <li>Task 2</li>
+        <li>Task 3</li>
+      </ul>
+    </section>
+  );
 }
