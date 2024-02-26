@@ -9,7 +9,33 @@ import {
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
 
+const weeks = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 export default function TaskTab() {
+  console.log(getTodayDate());
   const tasks = [
     {
       id: 1,
@@ -163,6 +189,17 @@ export default function TaskTab() {
       ],
     },
   ];
+  function getTodayDate() {
+    const today = new Date();
+    const date = today.setDate(today.getDate() + dayToAdd);
+    const newDate = new Date(date).toDateString();
+    const now = new Date().toDateString();
+
+    let month = today.getMonth();
+    let day = today.getDate();
+    let year = today.getFullYear();
+    return `${months[month]} ${day}, ${year}`;
+  }
   return (
     <ul id="task-tab">
       {tasks.map((tasks) => (
