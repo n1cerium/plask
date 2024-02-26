@@ -61,17 +61,20 @@ code {
 .task-header {
   display: flex;
   justify-content: space-between;
+  height: 2.5em;
 }
 .task-header > p {
-  margin-top: 2px;
-  margin-bottom: 0px;
+  font-size: 0.8em;
+  margin-left: 1em;
 }
-.task-header > span {
-  padding-right: 10px;
+.task-header button {
+  background: transparent;
+  border: 0;
+  font-size: 0.7em;
+  margin-top: 1.3em;
+  margin-right: 1em;
+  height: 0.3em;
   cursor: pointer;
-  height: 2em;
-  width: 1em;
-  justify-self: center;
 }
 .task-list-open {
   animation: 0.2s ease-out openAnim;
@@ -91,11 +94,23 @@ code {
   overflow-y: scroll;
 }
 .task-by-list > li {
-  background-color: lightgreen;
   width: 95%;
   border: 2px solid #2f2f2f;
   display: flex;
   justify-content: space-between;
+}
+.task-complete {
+  background-color: lightblue;
+}
+.task-ongoing {
+  background-color: lightgreen;
+}
+.task-upcoming {
+  background-color: khaki;
+}
+.task-by-list span {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .task-list-by-section {
   border-right: 2px solid #2f2f2f;
@@ -120,12 +135,12 @@ code {
     height: 0em;
   }
   to {
-    height: 4em;
+    height: 10em;
   }
 }
 @keyframes closeAnim {
   from {
-    height: 4em;
+    height: 10em;
   }
   to {
     height: 0em;
