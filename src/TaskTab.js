@@ -231,9 +231,14 @@ export default function TaskTab() {
 function TaskDatesList({ tasks }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   function handleOpenMain() {
     setIsOpen((o) => !o);
+  }
+  function handleDelete() {
+    setIsDeleting((deleting) => !deleting);
+    console.log("Deleting...");
   }
   // delaying the unmount of TaskList component so it performs the closing animation
   useEffect(() => {
@@ -266,7 +271,7 @@ function TaskDatesList({ tasks }) {
               <button>
                 <FontAwesomeIcon icon={faSort} />
               </button>
-              <button>
+              <button onClick={handleDelete}>
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </>
@@ -286,7 +291,9 @@ function TaskDatesList({ tasks }) {
       </header>
       {isRendered && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
-          {isOpen && <TaskListByList tasks={tasks.tasks} />}
+          {isOpen && (
+            <TaskListByList tasks={tasks.tasks} isDeleting={isDeleting} />
+          )}
         </Tasks>
       )}
     </li>
@@ -297,28 +304,39 @@ function Tasks({ className, children }) {
 }
 
 //TaskListByList meaning that all task are placed in unordered list
-function TaskListByList({ tasks }) {
+function TaskListByList({ tasks, isDeleting }) {
   return (
-    <ul className="task-by-list">
-      {tasks.map((task) => (
-        <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
-          <span>{task.name}</span>
-          <span>{task.status}</span>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="task-by-list">
+        {tasks.map((task) => (
+          <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
+            <span>
+              {isDeleting && <input type="checkbox" />}
+
+              {task.name}
+            </span>
+            <span>{task.status}</span>
+          </li>
+        ))}
+      </ul>
+      {isDeleting && (
+        <>
+          <button>Cancel</button>
+        </>
+      )}
+    </>
   );
 }
 
-function TaskListBySection({ taskName }) {
-  return (
-    <section className="task-list-by-section">
-      <header>{taskName}</header>
-      <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
-    </section>
-  );
-}
+// function TaskListBySection({ taskName }) {
+//   return (
+//     <section className="task-list-by-section">
+//       <header>{taskName}</header>
+//       <ul>
+//         <li>Task 1</li>
+//         <li>Task 2</li>
+//         <li>Task 3</li>
+//       </ul>
+//     </section>
+//   );
+// }
