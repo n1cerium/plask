@@ -10,13 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const weeks = [
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
-  "Sunday",
 ];
 
 const months = [
@@ -35,8 +35,8 @@ const months = [
 ];
 
 export default function TaskTab() {
-  console.log(getTodayDate(0));
-  const tasks = [
+  //console.log(getTodayDate(0));
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       dayOfTheWeek: "Monday",
@@ -188,17 +188,37 @@ export default function TaskTab() {
         { id: 3, name: "Task 3", status: "Upcoming" },
       ],
     },
-  ];
-  function getTodayDate(dayToAdd) {
+  ]);
+
+  useEffect(() => {
+    setTasks((ts) =>
+      ts.map((currentTask, index) => {
+        let currentDate = getDate(index);
+        return {
+          ...currentTask,
+          date: currentDate.date,
+          dayOfTheWeek: currentDate.dayOfTheWeek,
+        };
+      })
+    );
+    console.log(tasks);
+  }, []);
+
+  //this function will return the date and the day of the week
+  function getDate(dayToAdd) {
     const today = new Date();
-    const date = today.setDate(today.getDate() + dayToAdd);
-    const newDate = new Date(date).toDateString();
-    const now = new Date().toDateString();
+
+    today.setDate(today.getDate() + dayToAdd);
 
     let month = today.getMonth();
     let day = today.getDate();
     let year = today.getFullYear();
-    return `${months[month]} ${day}, ${year}`;
+    let dayWeek = today.getDay();
+    console.log(dayWeek);
+    return {
+      date: `${months[month]} ${day}, ${year}`,
+      dayOfTheWeek: weeks[dayWeek],
+    };
   }
   return (
     <ul id="task-tab">
