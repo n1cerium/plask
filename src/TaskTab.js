@@ -35,7 +35,7 @@ const months = [
 ];
 
 export default function TaskTab() {
-  console.log(getTodayDate());
+  console.log(getTodayDate(0));
   const tasks = [
     {
       id: 1,
@@ -189,7 +189,7 @@ export default function TaskTab() {
       ],
     },
   ];
-  function getTodayDate() {
+  function getTodayDate(dayToAdd) {
     const today = new Date();
     const date = today.setDate(today.getDate() + dayToAdd);
     const newDate = new Date(date).toDateString();
