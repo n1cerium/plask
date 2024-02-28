@@ -311,18 +311,21 @@ function TaskListByList({ tasks, isDeleting }) {
         {tasks.map((task) => (
           <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
             <span>
-              {isDeleting && <input type="checkbox" />}
+              {isDeleting && (
+                <input className="task-delete-checkbox" type="checkbox" />
+              )}
 
-              {task.name}
+              <span>{task.name}</span>
             </span>
             <span>{task.status}</span>
           </li>
         ))}
       </ul>
       {isDeleting && (
-        <>
+        <div className="task-delete-buttons">
           <button>Cancel</button>
-        </>
+          <button>Delete</button>
+        </div>
       )}
     </>
   );

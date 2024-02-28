@@ -101,6 +101,35 @@ code {
   display: flex;
   justify-content: space-between;
 }
+.task-delete-checkbox {
+  margin-right: -0.7em;
+  margin-left: -0.5em;
+  width: 1.2em;
+  height: 1.2em;
+}
+.task-delete-buttons > button {
+  height: 3em;
+  width: 6em;
+  font-size: 0.4em;
+  background-color: red;
+  cursor: pointer;
+  border-radius: 10%;
+}
+.task-delete-buttons > button:first-child {
+  background: transparent;
+  border: 0px;
+}
+.task-delete-buttons > button:last-child {
+  color: #f3f9d2;
+  border: 2px solid #2f2f2f;
+}
+.task-delete-buttons {
+  display: flex;
+  justify-content: end;
+  padding-right: 1em;
+  gap: 0.8em;
+  color: #2f2f2f;
+}
 .task-complete {
   background-color: lightblue;
 }
