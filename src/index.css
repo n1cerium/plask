@@ -102,7 +102,7 @@ code {
   justify-content: space-between;
 }
 .task-delete-checkbox {
-  margin-right: -0.7em;
+  margin-right: 1em;
   margin-left: -0.5em;
   width: 1.2em;
   height: 1.2em;
@@ -129,6 +129,7 @@ code {
   padding-right: 1em;
   gap: 0.8em;
   color: #2f2f2f;
+  margin-top: 1em;
 }
 .task-complete {
   background-color: lightblue;
