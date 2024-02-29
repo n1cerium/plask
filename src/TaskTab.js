@@ -189,28 +189,24 @@ export default function TaskTab() {
       ],
     },
   ]);
+
   function handleUpdateTask(taskID, tasksList) {
-    setTasks((ts) =>
-      ts.map(
-        (t) => {
-          if (t.id === tasksList.id) {
-            return {
-              ...t,
-              tasks: t.tasks.map((task) =>
-                taskID === task.id
-                  ? { ...task, willDelete: !task.willDelete }
-                  : task
-              ),
-            };
-          }
-          // if (task.id === t.tasks.id) {
-          //   console.log("Same id");
-          //   return { ...t, tasks: {} };
-          // }
-          return t;
+    const tasks = tasksList.tasks;
+
+    let updatedtask = tasks.map((t) =>
+      t.id === taskID ? { ...t, willDelete: !t.willDelete } : t
+    );
+
+    setTasks((allTasks) =>
+      allTasks.map((ts) => {
+        if (ts.id === tasksList.id) {
+          return {
+            ...ts,
+            tasks: updatedtask,
+          };
         }
-        //(task.id === t.tasks.id ? { ...t, tasks: {} } : t))
-      )
+        return ts;
+      })
     );
   }
   useEffect(() => {
