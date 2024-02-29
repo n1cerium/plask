@@ -198,17 +198,17 @@ export default function TaskTab() {
     );
 
     setTasks((allTasks) =>
-      allTasks.map((ts) => {
-        if (ts.id === tasksList.id) {
-          return {
-            ...ts,
-            tasks: updatedtask,
-          };
-        }
-        return ts;
-      })
+      allTasks.map((ts) =>
+        ts.id === tasksList.id
+          ? {
+              ...ts,
+              tasks: updatedtask,
+            }
+          : ts
+      )
     );
   }
+
   useEffect(() => {
     setTasks((ts) =>
       ts.map((currentTask, index) => {
@@ -259,9 +259,8 @@ function TaskDatesList({ tasks, onUpdateTask }) {
   function handleOpenMain() {
     setIsOpen((o) => !o);
   }
-  function handleDelete() {
-    setIsDeleting((deleting) => !deleting);
-    console.log("Deleting...");
+  function handleDeleteToggle() {
+    setIsDeleting(true);
   }
 
   // delaying the unmount of TaskList component so it performs the closing animation
@@ -290,28 +289,17 @@ function TaskDatesList({ tasks, onUpdateTask }) {
         <div>
           {isOpen && (
             <>
-              <button>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faSort} />
-              </button>
-              <button onClick={handleDelete}>
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+              <ButtonIcon icon={faPlus} />
+              <ButtonIcon icon={faSort} />
+              <ButtonIcon icon={faTrash} onClick={handleDeleteToggle} />
             </>
           )}
 
-          <button onClick={handleOpenMain}>
-            {isOpen ? (
-              <FontAwesomeIcon icon={faAngleUp} />
-            ) : (
-              <FontAwesomeIcon icon={faAngleDown} />
-            )}
-          </button>
-          <button>
-            <FontAwesomeIcon icon={faEllipsis} />
-          </button>
+          <ButtonIcon
+            icon={isOpen ? faAngleUp : faAngleDown}
+            onClick={handleOpenMain}
+          />
+          <ButtonIcon icon={faEllipsis} />
         </div>
       </header>
       {isRendered && (
@@ -321,7 +309,9 @@ function TaskDatesList({ tasks, onUpdateTask }) {
               tasks={tasks}
               onUpdateTask={onUpdateTask}
               isDeleting={isDeleting}
-            />
+            >
+              {isDeleting && <ButtonOptions onCancelDelete={setIsDeleting} />}
+            </TaskListByList>
           )}
         </Tasks>
       )}
@@ -333,7 +323,7 @@ function Tasks({ className, children }) {
 }
 
 //TaskListByList meaning that all task are placed in unordered list
-function TaskListByList({ tasks, isDeleting, onUpdateTask }) {
+function TaskListByList({ tasks, isDeleting, onUpdateTask, children }) {
   return (
     <>
       <ul className="task-by-list">
@@ -356,16 +346,25 @@ function TaskListByList({ tasks, isDeleting, onUpdateTask }) {
           </li>
         ))}
       </ul>
-      {isDeleting && (
-        <div className="task-delete-buttons">
-          <button>Cancel</button>
-          <button>Delete</button>
-        </div>
-      )}
+      {children}
     </>
   );
 }
-
+function ButtonIcon({ icon, onClick }) {
+  return (
+    <button onClick={onClick}>
+      <FontAwesomeIcon icon={icon} />
+    </button>
+  );
+}
+function ButtonOptions({ onCancelDelete }) {
+  return (
+    <div className="task-delete-buttons">
+      <button onClick={() => onCancelDelete(false)}>Cancel</button>
+      <button>Delete</button>
+    </div>
+  );
+}
 // function TaskListBySection({ taskName }) {
 //   return (
 //     <section className="task-list-by-section">
