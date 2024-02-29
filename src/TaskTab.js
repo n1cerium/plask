@@ -208,7 +208,17 @@ export default function TaskTab() {
       )
     );
   }
-
+  function handleDeletingTasks(tasksList) {
+    const tasks = tasksList.tasks;
+    console.log(tasks);
+    const tasksNotDeleted = tasks.filter((task) => !task.willDelete);
+    console.log(tasksNotDeleted);
+    setTasks((allTasks) =>
+      allTasks.map((ts) =>
+        tasksList.id === ts.id ? { ...ts, tasks: tasksNotDeleted } : ts
+      )
+    );
+  }
   useEffect(() => {
     setTasks((ts) =>
       ts.map((currentTask, index) => {
@@ -246,12 +256,13 @@ export default function TaskTab() {
           tasks={tasks}
           key={tasks.id}
           onUpdateTask={handleUpdateTask}
+          onDeletingTasks={handleDeletingTasks}
         />
       ))}
     </ul>
   );
 }
-function TaskDatesList({ tasks, onUpdateTask }) {
+function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -260,7 +271,7 @@ function TaskDatesList({ tasks, onUpdateTask }) {
     setIsOpen((o) => !o);
   }
   function handleDeleteToggle() {
-    setIsDeleting(true);
+    setIsDeleting((d) => !d);
   }
 
   // delaying the unmount of TaskList component so it performs the closing animation
@@ -310,7 +321,13 @@ function TaskDatesList({ tasks, onUpdateTask }) {
               onUpdateTask={onUpdateTask}
               isDeleting={isDeleting}
             >
-              {isDeleting && <ButtonOptions onCancelDelete={setIsDeleting} />}
+              {isDeleting && (
+                <ButtonOptions
+                  tasks={tasks}
+                  onCancelDelete={setIsDeleting}
+                  onDeletingTasks={onDeletingTasks}
+                />
+              )}
             </TaskListByList>
           )}
         </Tasks>
@@ -327,7 +344,7 @@ function TaskListByList({ tasks, isDeleting, onUpdateTask, children }) {
   return (
     <>
       <ul className="task-by-list">
-        {tasks.tasks.map((task, taskIndex) => (
+        {tasks.tasks.map((task) => (
           <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
             {isDeleting ? (
               <span>
@@ -357,11 +374,11 @@ function ButtonIcon({ icon, onClick }) {
     </button>
   );
 }
-function ButtonOptions({ onCancelDelete }) {
+function ButtonOptions({ tasks, onCancelDelete, onDeletingTasks }) {
   return (
     <div className="task-delete-buttons">
       <button onClick={() => onCancelDelete(false)}>Cancel</button>
-      <button>Delete</button>
+      <button onClick={() => onDeletingTasks(tasks)}>Delete</button>
     </div>
   );
 }
