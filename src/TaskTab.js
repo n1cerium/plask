@@ -42,10 +42,10 @@ export default function TaskTab() {
       dayOfTheWeek: "Monday",
       date: "January 1, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
-        { id: 4, name: "Task 4", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
+        { id: 4, name: "Task 4", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -53,9 +53,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Tuesday",
       date: "January 2, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -63,9 +63,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Wednesday",
       date: "January 3, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -73,9 +73,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Thursday",
       date: "January 4, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -83,9 +83,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Friday",
       date: "January 5, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -93,9 +93,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Saturday",
       date: "January 6, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -103,9 +103,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Sunday",
       date: "January 7, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -113,9 +113,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Monday",
       date: "January 8, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -123,9 +123,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Tuesday",
       date: "January 9, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -133,9 +133,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Wednesday",
       date: "January 10, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -143,9 +143,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Thursday",
       date: "January 11, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -153,9 +153,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Friday",
       date: "January 12, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -163,9 +163,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Saturday",
       date: "January 13, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -173,9 +173,9 @@ export default function TaskTab() {
       dayOfTheWeek: "Monday",
       date: "January 14, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
     {
@@ -183,13 +183,36 @@ export default function TaskTab() {
       dayOfTheWeek: "Tuesday",
       date: "January 15, 2024",
       tasks: [
-        { id: 1, name: "Task 1", status: "Complete" },
-        { id: 2, name: "Task 2", status: "OnGoing" },
-        { id: 3, name: "Task 3", status: "Upcoming" },
+        { id: 1, name: "Task 1", status: "Complete", willDelete: false },
+        { id: 2, name: "Task 2", status: "OnGoing", willDelete: false },
+        { id: 3, name: "Task 3", status: "Upcoming", willDelete: false },
       ],
     },
   ]);
-
+  function handleUpdateTask(taskID, tasksList) {
+    setTasks((ts) =>
+      ts.map(
+        (t) => {
+          if (t.id === tasksList.id) {
+            return {
+              ...t,
+              tasks: t.tasks.map((task) =>
+                taskID === task.id
+                  ? { ...task, willDelete: !task.willDelete }
+                  : task
+              ),
+            };
+          }
+          // if (task.id === t.tasks.id) {
+          //   console.log("Same id");
+          //   return { ...t, tasks: {} };
+          // }
+          return t;
+        }
+        //(task.id === t.tasks.id ? { ...t, tasks: {} } : t))
+      )
+    );
+  }
   useEffect(() => {
     setTasks((ts) =>
       ts.map((currentTask, index) => {
@@ -223,12 +246,16 @@ export default function TaskTab() {
   return (
     <ul id="task-tab">
       {tasks.map((tasks) => (
-        <TaskDatesList tasks={tasks} key={tasks.id} />
+        <TaskDatesList
+          tasks={tasks}
+          key={tasks.id}
+          onUpdateTask={handleUpdateTask}
+        />
       ))}
     </ul>
   );
 }
-function TaskDatesList({ tasks }) {
+function TaskDatesList({ tasks, onUpdateTask }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -240,6 +267,7 @@ function TaskDatesList({ tasks }) {
     setIsDeleting((deleting) => !deleting);
     console.log("Deleting...");
   }
+
   // delaying the unmount of TaskList component so it performs the closing animation
   useEffect(() => {
     let timerID;
@@ -252,6 +280,7 @@ function TaskDatesList({ tasks }) {
       // set isRendered to true so the TaskList component will be rendered on the screen
       setIsRendered(true);
     }
+    console.log(tasks);
 
     return () => clearTimeout(timerID);
   }, [isOpen, isRendered]);
@@ -292,7 +321,11 @@ function TaskDatesList({ tasks }) {
       {isRendered && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
           {isOpen && (
-            <TaskListByList tasks={tasks.tasks} isDeleting={isDeleting} />
+            <TaskListByList
+              tasks={tasks}
+              onUpdateTask={onUpdateTask}
+              isDeleting={isDeleting}
+            />
           )}
         </Tasks>
       )}
@@ -304,15 +337,20 @@ function Tasks({ className, children }) {
 }
 
 //TaskListByList meaning that all task are placed in unordered list
-function TaskListByList({ tasks, isDeleting }) {
+function TaskListByList({ tasks, isDeleting, onUpdateTask }) {
   return (
     <>
       <ul className="task-by-list">
-        {tasks.map((task) => (
+        {tasks.tasks.map((task, taskIndex) => (
           <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
             {isDeleting ? (
               <span>
-                <input className="task-delete-checkbox" type="checkbox" />
+                <input
+                  className="task-delete-checkbox"
+                  type="checkbox"
+                  checked={task.willDelete}
+                  onChange={() => onUpdateTask(task.id, tasks)}
+                />
                 <label>{task.name}</label>
               </span>
             ) : (
