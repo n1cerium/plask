@@ -8,6 +8,7 @@ import {
   faSort,
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
+import { useUnmountedAnim } from "./custom hooks/useUnmountedAnim";
 
 const weeks = [
   "Sunday",
@@ -212,7 +213,6 @@ export default function TaskTab() {
     const tasks = tasksList.tasks;
     console.log(tasks);
     const tasksNotDeleted = tasks.filter((task) => !task.willDelete);
-    console.log(tasksNotDeleted);
     setTasks((allTasks) =>
       allTasks.map((ts) =>
         tasksList.id === ts.id ? { ...ts, tasks: tasksNotDeleted } : ts
@@ -264,7 +264,7 @@ export default function TaskTab() {
 }
 function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isRendered, setIsRendered] = useState(false);
+  const isRendering = useUnmountedAnim(isOpen, 200);
   const [isDeleting, setIsDeleting] = useState(false);
 
   function handleOpenMain() {
@@ -274,22 +274,6 @@ function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
     setIsDeleting((d) => !d);
   }
 
-  // delaying the unmount of TaskList component so it performs the closing animation
-  useEffect(() => {
-    let timerID;
-    //if the TaskList component is closing and is currently rendered
-    //set isRendered to false after 0.5 seconds
-    if (!isOpen && isRendered) {
-      timerID = setTimeout(() => setIsRendered(false), 200);
-    } else if (isOpen && !isRendered) {
-      //if TaskList is opening and not currently rendered on the screen
-      // set isRendered to true so the TaskList component will be rendered on the screen
-      setIsRendered(true);
-    }
-    console.log(tasks);
-
-    return () => clearTimeout(timerID);
-  }, [isOpen, isRendered]);
   return (
     <li>
       <header className="task-header">
@@ -313,7 +297,7 @@ function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
           <ButtonIcon icon={faEllipsis} />
         </div>
       </header>
-      {isRendered && (
+      {isRendering && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
           {isOpen && (
             <TaskListByList
@@ -363,7 +347,7 @@ function TaskListByList({ tasks, isDeleting, onUpdateTask, children }) {
           </li>
         ))}
       </ul>
-      {children}
+      {tasks.tasks.length !== 0 && <>{children} </>}
     </>
   );
 }
