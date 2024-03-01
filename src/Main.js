@@ -1,5 +1,5 @@
 import InfoTab from "./InfoTab";
-import TaskTab from "./TaskTab";
+import TaskTab from "./components/task-tab/TaskTab";
 
 export default function Main() {
   return (

@@ -16,7 +16,7 @@ export function useUnmountedAnim(isMounted, delayTime) {
     }
 
     return () => clearTimeout(timerID);
-  }, [isMounted, isRendered]);
+  }, [isMounted, delayTime, isRendered]);
 
   return isRendered;
 }

@@ -8,7 +8,7 @@ import {
   faSort,
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
-import { useUnmountedAnim } from "./custom hooks/useUnmountedAnim";
+import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
 
 const weeks = [
   "Sunday",
@@ -211,7 +211,6 @@ export default function TaskTab() {
   }
   function handleDeletingTasks(tasksList) {
     const tasks = tasksList.tasks;
-    console.log(tasks);
     const tasksNotDeleted = tasks.filter((task) => !task.willDelete);
     setTasks((allTasks) =>
       allTasks.map((ts) =>
@@ -276,27 +275,12 @@ function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
 
   return (
     <li>
-      <header className="task-header">
-        <p>
-          <span style={{ fontWeight: "bold" }}>{tasks.dayOfTheWeek}</span>,{" "}
-          <span style={{ fontSize: "0.9em" }}>{tasks.date}</span>
-        </p>
-        <div>
-          {isOpen && (
-            <>
-              <ButtonIcon icon={faPlus} />
-              <ButtonIcon icon={faSort} />
-              <ButtonIcon icon={faTrash} onClick={handleDeleteToggle} />
-            </>
-          )}
-
-          <ButtonIcon
-            icon={isOpen ? faAngleUp : faAngleDown}
-            onClick={handleOpenMain}
-          />
-          <ButtonIcon icon={faEllipsis} />
-        </div>
-      </header>
+      <TaskHeader
+        tasks={tasks}
+        isOpen={isOpen}
+        onOpenMain={handleOpenMain}
+        onDeleteToggle={handleDeleteToggle}
+      />
       {isRendering && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
           {isOpen && (
@@ -317,6 +301,31 @@ function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
         </Tasks>
       )}
     </li>
+  );
+}
+function TaskHeader({ tasks, isOpen, onOpenMain, onDeleteToggle }) {
+  return (
+    <header className="task-header">
+      <p>
+        <span style={{ fontWeight: "bold" }}>{tasks.dayOfTheWeek}</span>,{" "}
+        <span style={{ fontSize: "0.9em" }}>{tasks.date}</span>
+      </p>
+      <div>
+        {isOpen && (
+          <>
+            <ButtonIcon icon={faPlus} />
+            <ButtonIcon icon={faSort} />
+            <ButtonIcon icon={faTrash} onClick={onDeleteToggle} />
+          </>
+        )}
+
+        <ButtonIcon
+          icon={isOpen ? faAngleUp : faAngleDown}
+          onClick={onOpenMain}
+        />
+        <ButtonIcon icon={faEllipsis} />
+      </div>
+    </header>
   );
 }
 function Tasks({ className, children }) {
