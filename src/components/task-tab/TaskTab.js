@@ -1,15 +1,5 @@
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTrash,
-  faPlus,
-  faAngleUp,
-  faAngleDown,
-  faSort,
-  faEllipsis,
-} from "@fortawesome/free-solid-svg-icons";
-import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
-
+import TaskDatesList from "./TaskDatesList";
 const weeks = [
   "Sunday",
   "Monday",
@@ -261,120 +251,7 @@ export default function TaskTab() {
     </ul>
   );
 }
-function TaskDatesList({ tasks, onUpdateTask, onDeletingTasks }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const isRendering = useUnmountedAnim(isOpen, 200);
-  const [isDeleting, setIsDeleting] = useState(false);
 
-  function handleOpenMain() {
-    setIsOpen((o) => !o);
-  }
-  function handleDeleteToggle() {
-    setIsDeleting((d) => !d);
-  }
-
-  return (
-    <li>
-      <TaskHeader
-        tasks={tasks}
-        isOpen={isOpen}
-        onOpenMain={handleOpenMain}
-        onDeleteToggle={handleDeleteToggle}
-      />
-      {isRendering && (
-        <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
-          {isOpen && (
-            <TaskListByList
-              tasks={tasks}
-              onUpdateTask={onUpdateTask}
-              isDeleting={isDeleting}
-            >
-              {isDeleting && (
-                <ButtonOptions
-                  tasks={tasks}
-                  onCancelDelete={setIsDeleting}
-                  onDeletingTasks={onDeletingTasks}
-                />
-              )}
-            </TaskListByList>
-          )}
-        </Tasks>
-      )}
-    </li>
-  );
-}
-function TaskHeader({ tasks, isOpen, onOpenMain, onDeleteToggle }) {
-  return (
-    <header className="task-header">
-      <p>
-        <span style={{ fontWeight: "bold" }}>{tasks.dayOfTheWeek}</span>,{" "}
-        <span style={{ fontSize: "0.9em" }}>{tasks.date}</span>
-      </p>
-      <div>
-        {isOpen && (
-          <>
-            <ButtonIcon icon={faPlus} />
-            <ButtonIcon icon={faSort} />
-            <ButtonIcon icon={faTrash} onClick={onDeleteToggle} />
-          </>
-        )}
-
-        <ButtonIcon
-          icon={isOpen ? faAngleUp : faAngleDown}
-          onClick={onOpenMain}
-        />
-        <ButtonIcon icon={faEllipsis} />
-      </div>
-    </header>
-  );
-}
-function Tasks({ className, children }) {
-  return <main className={className}>{children}</main>;
-}
-
-//TaskListByList meaning that all task are placed in unordered list
-function TaskListByList({ tasks, isDeleting, onUpdateTask, children }) {
-  return (
-    <>
-      <ul className="task-by-list">
-        {tasks.tasks.map((task) => (
-          <li className={`task-${task.status.toLowerCase()}`} key={task.id}>
-            {isDeleting ? (
-              <span>
-                <input
-                  className="task-delete-checkbox"
-                  type="checkbox"
-                  checked={task.willDelete}
-                  onChange={() => onUpdateTask(task.id, tasks)}
-                />
-                <label>{task.name}</label>
-              </span>
-            ) : (
-              <span>{task.name}</span>
-            )}
-            <span>{task.status}</span>
-          </li>
-        ))}
-      </ul>
-      {tasks.tasks.length !== 0 && <>{children} </>}
-    </>
-  );
-}
-function ButtonIcon({ icon, onClick }) {
-  return (
-    <button onClick={onClick}>
-      <FontAwesomeIcon icon={icon} />
-    </button>
-  );
-}
-function ButtonOptions({ tasks, onCancelDelete, onDeletingTasks }) {
-  return (
-    <div className="task-delete-buttons">
-      <button onClick={() => onCancelDelete(false)}>Cancel</button>
-      <button onClick={() => onDeletingTasks(tasks)}>Delete</button>
-    </div>
-  );
-}
 // function TaskListBySection({ taskName }) {
 //   return (
 //     <section className="task-list-by-section">
