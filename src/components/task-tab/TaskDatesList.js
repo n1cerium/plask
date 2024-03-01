@@ -34,19 +34,20 @@ export default function TaskDatesList({
       {isRendering && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
           {isOpen && (
-            <TaskListByList
-              tasks={tasks}
-              onUpdateTask={onUpdateTask}
-              isDeleting={isDeleting}
-            >
-              {isDeleting && (
+            <>
+              <TaskListByList
+                tasks={tasks}
+                onUpdateTask={onUpdateTask}
+                isDeleting={isDeleting}
+              />
+              {isDeleting && tasks.tasks.length !== 0 && (
                 <ButtonOptions
                   tasks={tasks}
                   onCancelDelete={setIsDeleting}
                   onDeletingTasks={onDeletingTasks}
                 />
               )}
-            </TaskListByList>
+            </>
           )}
         </Tasks>
       )}

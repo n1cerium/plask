@@ -181,7 +181,7 @@ export default function TaskTab() {
     },
   ]);
 
-  function handleUpdateTask(taskID, tasksList) {
+  function handleCheckedTask(taskID, tasksList) {
     const tasks = tasksList.tasks;
 
     let updatedtask = tasks.map((t) =>
@@ -244,7 +244,7 @@ export default function TaskTab() {
         <TaskDatesList
           tasks={tasks}
           key={tasks.id}
-          onUpdateTask={handleUpdateTask}
+          onUpdateTask={handleCheckedTask}
           onDeletingTasks={handleDeletingTasks}
         />
       ))}
