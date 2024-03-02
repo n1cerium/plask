@@ -11,16 +11,17 @@ export default function TaskDatesList({
   tasks,
   onUpdateTask,
   onDeletingTasks,
+  isDeleting,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const isRendering = useUnmountedAnim(isOpen, 200);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   function handleOpenMain() {
     setIsOpen((o) => !o);
   }
   function handleDeleteToggle() {
-    setIsDeleting((d) => !d);
+    setShowDelete((d) => !d);
   }
 
   return (
@@ -38,12 +39,13 @@ export default function TaskDatesList({
               <TaskListByList
                 tasks={tasks}
                 onUpdateTask={onUpdateTask}
+                showDelete={showDelete}
                 isDeleting={isDeleting}
               />
-              {isDeleting && tasks.tasks.length !== 0 && (
+              {showDelete && tasks.tasks.length !== 0 && (
                 <ButtonOptions
                   tasks={tasks}
-                  onCancelDelete={setIsDeleting}
+                  onCancelDelete={setShowDelete}
                   onDeletingTasks={onDeletingTasks}
                 />
               )}

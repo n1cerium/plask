@@ -162,6 +162,17 @@ code {
   animation: 0.2s ease-out closeAnim;
   height: 0em;
 }
+.task-delete {
+  animation: 0.4s ease-out fadeOut;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @keyframes openAnim {
   from {
     height: 0em;
