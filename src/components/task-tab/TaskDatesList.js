@@ -12,6 +12,7 @@ export default function TaskDatesList({
   onUpdateTask,
   onDeletingTasks,
   isDeleting,
+  onStatusChange,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const isRendering = useUnmountedAnim(isOpen, 200);
@@ -41,6 +42,7 @@ export default function TaskDatesList({
                 onUpdateTask={onUpdateTask}
                 showDelete={showDelete}
                 isDeleting={isDeleting}
+                onStatusChange={onStatusChange}
               />
               {showDelete && tasks.tasks.length !== 0 && (
                 <ButtonOptions

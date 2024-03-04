@@ -1,5 +1,5 @@
-import Main from "./Main";
-import Navigation from "./Navigation";
+import Main from "./components/Main";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (

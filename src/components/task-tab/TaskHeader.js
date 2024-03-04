@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import ButtonIcon from "../buttons/ButtonIcon";
 import {
   faTrash,
@@ -14,6 +15,22 @@ export default function TaskHeader({
   onOpenMain,
   onDeleteToggle,
 }) {
+  const [isSortOptionOpen, setIsSortOptionOpen] = useState(false);
+  const sortIconRef = useRef(null);
+  function handleOpenSortOption() {
+    setIsSortOptionOpen((open) => !open);
+  }
+  useEffect(() => {
+    function handleClickOutsideDiv(e) {
+      //sortIconRef.current check if element exists and if its child does not contains elements
+      if (sortIconRef.current && !sortIconRef.current.contains(e.target)) {
+        setIsSortOptionOpen(false);
+      }
+    }
+    document.addEventListener("click", handleClickOutsideDiv);
+
+    return () => document.removeEventListener("click", handleClickOutsideDiv);
+  }, [isSortOptionOpen]);
   return (
     <header className="task-header">
       <p>
@@ -24,7 +41,15 @@ export default function TaskHeader({
         {isOpen && (
           <>
             <ButtonIcon icon={faPlus} />
-            <ButtonIcon icon={faSort} />
+            <span className="task-sort-icon" ref={sortIconRef}>
+              <ButtonIcon icon={faSort} onClick={handleOpenSortOption} />
+              {isSortOptionOpen && (
+                <ul>
+                  <li>Hi</li>
+                  <li>Hello</li>
+                </ul>
+              )}
+            </span>
             <ButtonIcon icon={faTrash} onClick={onDeleteToggle} />
           </>
         )}

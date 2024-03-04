@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TaskDatesList from "./TaskDatesList";
-import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
+
 const weeks = [
   "Sunday",
   "Monday",
@@ -43,7 +43,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -74,7 +74,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -99,7 +99,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -124,7 +124,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -149,7 +149,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -174,7 +174,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -199,7 +199,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -224,7 +224,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -249,7 +249,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -274,7 +274,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -299,7 +299,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -324,7 +324,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -349,7 +349,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -374,7 +374,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -399,7 +399,7 @@ export default function TaskTab() {
         {
           id: 2,
           name: "Task 2",
-          status: "OnGoing",
+          status: "Ongoing",
           willDelete: false,
         },
         {
@@ -412,6 +412,7 @@ export default function TaskTab() {
     },
   ]);
   const [isDeleting, setIsDeleting] = useState(false);
+
   function updateTasks(task, updatedtask) {
     setTasks((allTasks) =>
       allTasks.map((ts) =>
@@ -442,7 +443,15 @@ export default function TaskTab() {
     setTimeout(() => {
       updateTasks(tasksList, updatedTask);
       setIsDeleting(false);
-    }, 300);
+    }, 250);
+  }
+  function handleChangeStatus(currentValue, taskID, tasksList) {
+    const tasks = tasksList.tasks;
+
+    let updatedTask = tasks.map((t) =>
+      t.id === taskID ? { ...t, status: currentValue } : t
+    );
+    updateTasks(tasksList, updatedTask);
   }
 
   useEffect(() => {
@@ -484,6 +493,7 @@ export default function TaskTab() {
           onUpdateTask={handleCheckedTask}
           onDeletingTasks={handleDeletingTasks}
           isDeleting={isDeleting}
+          onStatusChange={handleChangeStatus}
         />
       ))}
     </ul>

@@ -1,11 +1,11 @@
-import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
-
+import TaskContent from "./TaskContent";
 //TaskListByList meaning that all task are placed in unordered list
 export default function TaskListByList({
   tasks,
   showDelete,
   onUpdateTask,
   isDeleting,
+  onStatusChange,
   children,
 }) {
   return (
@@ -19,39 +19,10 @@ export default function TaskListByList({
             onUpdateTask={onUpdateTask}
             key={task.id}
             isDeleting={isDeleting}
+            onStatusChange={onStatusChange}
           />
         ))}
       </ul>
-    </>
-  );
-}
-function TaskContent({ task, tasks, showDelete, onUpdateTask, isDeleting }) {
-  const isPerformAnim = useUnmountedAnim(task.isDeleted, 10000);
-  const isTaskSelected = !isPerformAnim;
-  return (
-    <>
-      {isTaskSelected && (
-        <li
-          className={`task-${task.status.toLowerCase()} ${
-            task.willDelete && isDeleting ? "task-delete" : ""
-          }`}
-        >
-          {showDelete ? (
-            <span>
-              <input
-                className="task-delete-checkbox"
-                type="checkbox"
-                checked={task.willDelete}
-                onChange={() => onUpdateTask(task.id, tasks)}
-              />
-              <label>{task.name}</label>
-            </span>
-          ) : (
-            <span>{task.name}</span>
-          )}
-          <span>{task.status}</span>
-        </li>
-      )}
     </>
   );
 }
