@@ -71,9 +71,25 @@ code {
   font-weight: bolder;
   justify-self: center;
 }
-
 #info-add-task-input {
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+#info-add-task-input input {
+  background-color: #92b4a7;
+  border: none;
+  border-bottom: 2px solid #2f2f2f;
+  width: 15em;
+  height: 2em;
+  font-size: larger;
+}
+#info-add-task-input input:focus {
+  outline: none;
+  border-bottom: 2px solid #2f2f2f;
+}
+#info-add-task-input label {
+  font-size: 1em;
 }
 /*Button Options javascript file*/
 

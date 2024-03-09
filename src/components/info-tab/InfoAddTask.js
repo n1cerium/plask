@@ -3,11 +3,15 @@ export default function AddTask() {
     <main id="info-add-task">
       <h2>Add a Task</h2>
       <section id="info-add-task-input">
-        <label>Name: </label> <br />
-        <input type="text"></input>
-        <br />
-        <label>Description: </label>
-        <input type="textbox"></input>
+        <div>
+          <label>Name: </label> <br />
+          <input type="text"></input>
+        </div>
+        <div>
+          <label>Description: </label>
+          <br />
+          <input type="textbox"></input>
+        </div>
       </section>
     </main>
   );
