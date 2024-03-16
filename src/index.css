@@ -76,7 +76,8 @@ code {
   flex-direction: column;
   gap: 1em;
 }
-#info-add-task-input input {
+#info-add-task-input input,
+#info-add-task-input textarea {
   background-color: #92b4a7;
   border: none;
   border-bottom: 2px solid #2f2f2f;
@@ -84,13 +85,35 @@ code {
   height: 2em;
   font-size: larger;
 }
+#info-add-task-input textarea {
+  border: 2px solid #2f2f2f;
+  resize: none;
+  width: 18em;
+  height: 4em;
+  margin-top: 20px;
+}
 #info-add-task-input input:focus {
   outline: none;
   border-bottom: 2px solid #2f2f2f;
 }
 #info-add-task-input label {
-  font-size: 1em;
+  font-size: 1.1em;
 }
+#input-priority {
+  display: flex;
+  gap: 2em;
+}
+#input-priority > select,
+.input-date > select {
+  border: none;
+}
+#input-priority > select > option {
+  background-color: #92b4a7;
+}
+.input-date > select > option {
+  background-color: #92b4a7;
+}
+
 /*Button Options javascript file*/
 
 .task-delete-buttons > button {
@@ -124,7 +147,9 @@ code {
 
 /*Task Content javascript file*/
 
-.task-status {
+.task-status,
+#input-priority > select,
+.input-date > select {
   height: 2em;
   font-size: 0.9em;
   background: transparent;
@@ -225,7 +250,6 @@ code {
 /*******************************/
 
 /*Task List By List javascript file*/
-
 .task-by-list::-webkit-scrollbar {
   display: none;
 }
