@@ -14,6 +14,7 @@ export default function TaskHeader({
   isOpen,
   onOpenMain,
   onDeleteToggle,
+  onAddTask,
 }) {
   const [isSortOptionOpen, setIsSortOptionOpen] = useState(false);
   const sortIconRef = useRef(null);
@@ -40,7 +41,7 @@ export default function TaskHeader({
       <div>
         {isOpen && (
           <>
-            <ButtonIcon icon={faPlus} />
+            <ButtonIcon icon={faPlus} onClick={onAddTask} />
             <span className="task-sort-icon" ref={sortIconRef}>
               <ButtonIcon icon={faSort} onClick={handleOpenSortOption} />
               {isSortOptionOpen && (

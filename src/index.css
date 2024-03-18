@@ -31,7 +31,7 @@ code {
 }
 #info-tab {
   height: 85vh;
-  width: 35%;
+  width: 30%;
   background-color: #92b4a7;
   color: #2f2f2f;
   display: flex;
@@ -40,11 +40,12 @@ code {
 #info-navigation {
   border-right: 2px solid #2f2f2f;
   display: flex;
-  width: 15%;
+  width: 12%;
   flex-direction: column;
   gap: 1em;
   padding-top: 10px;
 }
+
 #info-navigation > button {
   height: 5em;
   width: 5em;
@@ -64,8 +65,10 @@ code {
 #info-add-task {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 85%;
+  width: 90%;
+  margin-top: -2em;
 }
 #info-add-task > h2 {
   font-weight: bolder;
@@ -75,9 +78,10 @@ code {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  margin-top: 2em;
+  font-size: 1.1em;
 }
-#info-add-task-input input,
-#info-add-task-input textarea {
+#info-add-task-input input {
   background-color: #92b4a7;
   border: none;
   border-bottom: 2px solid #2f2f2f;
@@ -85,35 +89,45 @@ code {
   height: 2em;
   font-size: larger;
 }
-#info-add-task-input textarea {
-  border: 2px solid #2f2f2f;
-  resize: none;
-  width: 18em;
-  height: 4em;
-  margin-top: 20px;
-}
 #info-add-task-input input:focus {
   outline: none;
   border-bottom: 2px solid #2f2f2f;
 }
 #info-add-task-input label {
-  font-size: 1.1em;
+  font-weight: 500;
 }
 #input-priority {
   display: flex;
-  gap: 2em;
+  gap: 3em;
 }
-#input-priority > select,
-.input-date > select {
+#input-priority > label {
+  padding-top: 5px;
+}
+.input-select {
   border: none;
+  color: #2f2f2f;
 }
-#input-priority > select > option {
+.input-select > option {
   background-color: #92b4a7;
+  color: #2f2f2f;
 }
-.input-date > select > option {
-  background-color: #92b4a7;
+#input-button-add {
+  margin-top: 3em;
+  width: 10em;
+  height: 3em;
+  font-size: 0.8em;
+  background-color: #f3f9d2;
+  color: #2f2f2f;
+  font-weight: bold;
+  border-radius: 10%;
 }
-
+#input-error {
+  height: 2em;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  color: rgb(255, 45, 45);
+  font-weight: bold;
+}
 /*Button Options javascript file*/
 
 .task-delete-buttons > button {
@@ -140,7 +154,6 @@ code {
   color: #2f2f2f;
   margin-top: 1em;
 }
-
 /*Button Options javascript file*/
 
 /*******************************/

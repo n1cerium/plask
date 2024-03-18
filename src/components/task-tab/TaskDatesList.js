@@ -9,20 +9,21 @@ import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
 
 export default function TaskDatesList({
   tasks,
-  onUpdateTask,
-  onDeletingTasks,
-  isDeleting,
-  onStatusChange,
+  onGetDate,
+  children,
+  setShowDelete,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const isRendering = useUnmountedAnim(isOpen, 200);
-  const [showDelete, setShowDelete] = useState(false);
 
   function handleOpenMain() {
     setIsOpen((o) => !o);
   }
   function handleDeleteToggle() {
     setShowDelete((d) => !d);
+  }
+  function handleAddingTask() {
+    onGetDate(tasks.date);
   }
 
   return (
@@ -32,27 +33,11 @@ export default function TaskDatesList({
         isOpen={isOpen}
         onOpenMain={handleOpenMain}
         onDeleteToggle={handleDeleteToggle}
+        onAddTask={handleAddingTask}
       />
       {isRendering && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>
-          {isOpen && (
-            <>
-              <TaskListByList
-                tasks={tasks}
-                onUpdateTask={onUpdateTask}
-                showDelete={showDelete}
-                isDeleting={isDeleting}
-                onStatusChange={onStatusChange}
-              />
-              {showDelete && tasks.tasks.length !== 0 && (
-                <ButtonOptions
-                  tasks={tasks}
-                  onCancelDelete={setShowDelete}
-                  onDeletingTasks={onDeletingTasks}
-                />
-              )}
-            </>
-          )}
+          {isOpen && children}
         </Tasks>
       )}
     </li>
