@@ -28,15 +28,20 @@ const months = [
   "Dec",
 ];
 
-export default function TaskTab({ tasks, onUpdateTasks, onGetDate }) {
+export default function TaskTab({
+  tasks,
+  onUpdateTasks,
+  onGetDate,
+  onGetSpecificTask,
+}) {
   //console.log(getTodayDate(0));
 
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
-  function handleDeleteToggle() {
-    setShowDelete((d) => !d);
-  }
+  // function handleDeleteToggle() {
+  //   setShowDelete((d) => !d);
+  // }
 
   function updateTasks(task, updatedtask) {
     onUpdateTasks((allTasks) =>
@@ -116,6 +121,7 @@ export default function TaskTab({ tasks, onUpdateTasks, onGetDate }) {
           tasks={tasks}
           key={tasks.id}
           onGetDate={onGetDate}
+          onGetSpecificTask={onGetSpecificTask}
           setShowDelete={setShowDelete}
         >
           <TaskListByList
@@ -124,6 +130,8 @@ export default function TaskTab({ tasks, onUpdateTasks, onGetDate }) {
             showDelete={showDelete}
             isDeleting={isDeleting}
             onStatusChange={handleChangeStatus}
+            onGetSpecificTask={onGetSpecificTask}
+            onGetDate={onGetDate}
           />
           {showDelete && tasks.tasks.length !== 0 && (
             <ButtonOptions
@@ -137,16 +145,3 @@ export default function TaskTab({ tasks, onUpdateTasks, onGetDate }) {
     </ul>
   );
 }
-
-// function TaskListBySection({ taskName }) {
-//   return (
-//     <section className="task-list-by-section">
-//       <header>{taskName}</header>
-//       <ul>
-//         <li>Task 1</li>
-//         <li>Task 2</li>
-//         <li>Task 3</li>
-//       </ul>
-//     </section>
-//   );
-// }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SelectForm from "../SelectForm";
+import InfoBox from "./InfoBox";
 
 const months = [
   "Jan",
@@ -41,15 +42,22 @@ export default function AddTask({ onAddTasks, specificDate }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [allocatedTime, setAllocatedTime] = useState(null);
   const [priorityLevel, setPriorityLevel] = useState(1);
   const [startDate, setStartDate] = useState({ ...fullDate });
   const [endDate, setEndDate] = useState({ ...fullDate });
-  const [error, setError] = useState({});
+  const [error, setError] = useState({
+    nameErr: "",
+    categoryErr: "",
+    endDateErr: "",
+    pastDateErr: "",
+  });
 
   const tempEndDate = new Date(endDate.year, endDate.month, endDate.day);
   const endFullDate = new Date(endDate.year, endDate.month, endDate.day);
 
   function handleAddTask() {
+    let isError = false;
     const tempStartDate = new Date(
       startDate.year,
       startDate.month,
@@ -58,24 +66,55 @@ export default function AddTask({ onAddTasks, specificDate }) {
     const todayDate = new Date();
     todayDate.setHours(0, 0, 0, 0);
 
-    setError((err) => ({
-      nameErr: name ? "" : "The name should not be empty",
-      categoryErr: category ? "" : "The category should not be empty",
-      pastDateErr:
-        tempStartDate < todayDate
-          ? "The start date must be today or later"
-          : "",
-      endDateErr:
-        tempEndDate < tempStartDate
-          ? "The end date must be today or later than today's date"
-          : "",
-    }));
-    if (
-      error.nameErr !== "" ||
-      error.categoryErr !== "" ||
-      error.pastDateErr !== "" ||
-      error.endDateErr !== ""
-    ) {
+    function updateError(condition, errorMessage, errorEmptyMessage) {
+      if (condition) {
+        isError = true;
+
+        setError((err) => ({
+          ...err,
+          ...errorMessage,
+        }));
+        return;
+      }
+      setError((err) => ({
+        ...err,
+        ...errorEmptyMessage,
+      }));
+    }
+
+    updateError(
+      name === "",
+      {
+        nameErr: "The name should not be empty",
+      },
+      { nameErr: "" }
+    );
+
+    updateError(
+      category === "",
+      {
+        categoryErr: "The category should not be empty",
+      },
+      { categoryErr: "" }
+    );
+
+    updateError(
+      tempStartDate < todayDate,
+      {
+        pastDateErr: "The start date must be today or later",
+      },
+      { pastDateErr: "" }
+    );
+
+    updateError(
+      tempEndDate < tempStartDate,
+      {
+        endDateErr: "The end date must be start date or later",
+      },
+      { endDateErr: "" }
+    );
+    console.log(error);
+    if (isError) {
       return;
     }
 
@@ -114,21 +153,29 @@ export default function AddTask({ onAddTasks, specificDate }) {
     setCategory(e.target.value);
   }
   return (
-    <main id="info-add-task">
-      <h2>Adding a Task</h2>
+    <InfoBox className="info-task" title="Adding a Task">
       <section id="info-add-task-input">
-        <InputForm label="Name:" value={name} onChange={handleChangeName} />
         <InputForm
+          type="text"
+          label="Name:"
+          value={name}
+          onChange={handleChangeName}
+        />
+        <InputForm
+          type="text"
           label="Description:"
           value={description}
           onChange={handleChangeDesc}
           placeholder="Optional..."
         />
         <InputForm
+          type="text"
           label="Category:"
           value={category}
           onChange={handleChangeCate}
         />
+        <InputForm type="number" label="Allocated Time in Minutes: " />
+
         <div id="input-priority">
           <label>Priority Level: </label>
           <SelectForm
@@ -174,15 +221,15 @@ export default function AddTask({ onAddTasks, specificDate }) {
       <button id="input-button-add" onClick={handleAddTask}>
         Add This Task
       </button>
-    </main>
+    </InfoBox>
   );
 }
-function InputForm({ label, value, onChange, placeholder }) {
+function InputForm({ type, label, value, onChange, placeholder }) {
   return (
     <div>
       <label>{label}</label> <br />
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={onChange}
         placeholder={placeholder}

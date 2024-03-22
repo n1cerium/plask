@@ -22,6 +22,7 @@ code {
   font-size: 2em;
   margin-top: -1em;
 }
+
 #main-content {
   display: flex;
   flex-direction: row;
@@ -44,6 +45,7 @@ code {
   flex-direction: column;
   gap: 1em;
   padding-top: 10px;
+  padding-right: 10px;
 }
 
 #info-navigation > button {
@@ -61,18 +63,24 @@ code {
   width: 60%;
   height: auto;
 }
-
-#info-add-task {
+.info-task::-webkit-scrollbar {
+  display: none;
+}
+.info-task {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
-  margin-top: -2em;
+  overflow: scroll;
 }
-#info-add-task > h2 {
+.info-task > h2 {
   font-weight: bolder;
   justify-self: center;
+}
+.info-all-info {
+  justify-self: start;
+  margin-left: -5em;
 }
 #info-add-task-input {
   display: flex;
@@ -81,13 +89,17 @@ code {
   margin-top: 2em;
   font-size: 1.1em;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 #info-add-task-input input {
   background-color: #92b4a7;
   border: none;
   border-bottom: 2px solid #2f2f2f;
   width: 15em;
   height: 2em;
-  font-size: larger;
 }
 #info-add-task-input input:focus {
   outline: none;
@@ -112,7 +124,6 @@ code {
   color: #2f2f2f;
 }
 #input-button-add {
-  margin-top: 3em;
   width: 10em;
   height: 3em;
   font-size: 0.8em;

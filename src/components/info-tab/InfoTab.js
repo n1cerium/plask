@@ -9,18 +9,32 @@ export default function InfoTab({
   onAddTasks,
   specificDate,
   onChangeSpecificDate,
+  specificTask,
+  onChangeSpecificTask,
 }) {
   const [isHomeOpen, setIsHomeOpen] = useState(true);
   const [isAddTask, setIsAddTask] = useState(false);
   const [isTaskInfo, setIsTaskInfo] = useState(false);
   console.log(specificDate);
   useEffect(() => {
-    if (specificDate !== "") {
-      setIsAddTask(true);
-      setIsHomeOpen(false);
-      setIsTaskInfo(false);
+    function updateInfoNav() {
+      if (specificDate !== "") {
+        setIsAddTask(true);
+        setIsHomeOpen(false);
+        setIsTaskInfo(false);
+
+        return;
+      }
+
+      if (Object.keys(specificTask).length !== 0) {
+        setIsAddTask(false);
+        setIsHomeOpen(false);
+        setIsTaskInfo(true);
+      }
     }
-  }, [specificDate]);
+
+    updateInfoNav();
+  }, [specificDate, specificTask]);
   return (
     <section id="info-tab">
       <InfoTabNav
@@ -28,6 +42,7 @@ export default function InfoTab({
         onOpenAddTask={setIsAddTask}
         onOpenTaskInfo={setIsTaskInfo}
         onChangeSpecificDate={onChangeSpecificDate}
+        onChangeSpecificTask={onChangeSpecificTask}
       />
       {isHomeOpen && <InfoHome />}
       {isAddTask && (
@@ -37,7 +52,9 @@ export default function InfoTab({
           key={specificDate}
         />
       )}
-      {isTaskInfo && <InfoTaskInfo />}
+      {isTaskInfo && (
+        <InfoTaskInfo key={specificTask.id} specificTask={specificTask} />
+      )}
     </section>
   );
 }

@@ -7,8 +7,14 @@ export default function TaskListByList({
   onUpdateTask,
   isDeleting,
   onStatusChange,
+  onGetSpecificTask,
+  onGetDate,
 }) {
   const statuses = ["Complete", "Ongoing", "Upcoming"];
+  function handleGettingTask(task) {
+    onGetSpecificTask(task);
+    onGetDate("");
+  }
   return (
     <>
       <ul className="task-by-list">
@@ -18,6 +24,7 @@ export default function TaskListByList({
             tasks={tasks}
             key={task.id}
             isDeleting={isDeleting}
+            onClick={() => handleGettingTask(task)}
           >
             {showDelete ? (
               <span>

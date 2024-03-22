@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import Tasks from "./Tasks";
 import TaskHeader from "./TaskHeader";
-import ButtonOptions from "../buttons/ButtonOptions";
-import TaskListByList from "./TaskListByList";
 
 import { useUnmountedAnim } from "../../custom hooks/useUnmountedAnim";
 
@@ -12,6 +10,7 @@ export default function TaskDatesList({
   onGetDate,
   children,
   setShowDelete,
+  onGetSpecificTask,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const isRendering = useUnmountedAnim(isOpen, 200);
@@ -24,6 +23,7 @@ export default function TaskDatesList({
   }
   function handleAddingTask() {
     onGetDate(tasks.date);
+    onGetSpecificTask({});
   }
 
   return (

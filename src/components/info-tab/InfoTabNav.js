@@ -9,17 +9,20 @@ export default function InfoTabNav({
   onOpenAddTask,
   onOpenTaskInfo,
   onChangeSpecificDate,
+  onChangeSpecificTask,
 }) {
   function handleOpeningHome() {
     onOpenHome(true);
     onOpenAddTask(false);
     onOpenTaskInfo(false);
     onChangeSpecificDate("");
+    onChangeSpecificTask("");
   }
   function handleOpeningAddingTask() {
     onOpenHome(false);
     onOpenAddTask(true);
     onOpenTaskInfo(false);
+    onChangeSpecificTask("");
   }
   function handleOpeningTaskInfo() {
     onOpenHome(false);

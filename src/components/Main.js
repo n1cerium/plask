@@ -372,6 +372,7 @@ export default function Main() {
     },
   ]);
   const [specifiedDate, setSpecifiedDate] = useState("");
+  const [specificTask, setSpecificTask] = useState({});
   return (
     <main id="main-content">
       <InfoTab
@@ -379,11 +380,14 @@ export default function Main() {
         onAddTasks={setTasks}
         specificDate={specifiedDate}
         onChangeSpecificDate={setSpecifiedDate}
+        specificTask={specificTask}
+        onChangeSpecificTask={setSpecificTask}
       />
       <TaskTab
         tasks={tasks}
         onUpdateTasks={setTasks}
         onGetDate={setSpecifiedDate}
+        onGetSpecificTask={setSpecificTask}
       />
     </main>
   );
