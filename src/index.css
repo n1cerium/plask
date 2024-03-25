@@ -69,7 +69,7 @@ code {
 .info-task {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   width: 90%;
   overflow: scroll;
@@ -81,6 +81,10 @@ code {
 .info-all-info {
   justify-self: start;
   margin-left: -5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  font-size: large;
 }
 #info-add-task-input {
   display: flex;
@@ -100,6 +104,7 @@ input::-webkit-inner-spin-button {
   border-bottom: 2px solid #2f2f2f;
   width: 15em;
   height: 2em;
+  font-size: 1.1em;
 }
 #info-add-task-input input:focus {
   outline: none;
@@ -107,13 +112,14 @@ input::-webkit-inner-spin-button {
 }
 #info-add-task-input label {
   font-weight: 500;
+  display: block;
 }
 #input-priority {
   display: flex;
   gap: 3em;
 }
 #input-priority > label {
-  padding-top: 5px;
+  padding-top: 3px;
 }
 .input-select {
   border: none;
@@ -131,7 +137,16 @@ input::-webkit-inner-spin-button {
   color: #2f2f2f;
   font-weight: bold;
   border-radius: 10%;
+  margin-top: 4em;
 }
+#input-time-allocate > input {
+  width: 2em;
+}
+#input-time-allocate > label {
+  display: inline;
+  margin-right: 1em;
+}
+
 #input-error {
   height: 2em;
   margin-top: 1em;
@@ -256,6 +271,10 @@ input::-webkit-inner-spin-button {
 .task-header button:hover {
   background-color: rgba(47, 47, 47, 0.1);
   height: inherit;
+}
+.task-header-allocated {
+  font-size: large;
+  align-self: end;
 }
 
 .task-sort-icon ul {

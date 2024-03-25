@@ -38,6 +38,9 @@ export default function TaskHeader({
         <span style={{ fontWeight: "bold" }}>{tasks.dayOfTheWeek}</span>,{" "}
         <span style={{ fontSize: "0.9em" }}>{tasks.date}</span>
       </p>
+      <span className="task-header-allocated">
+        {tasks.allocatedTimeLeft} time left to allocate
+      </span>
       <div>
         {isOpen && (
           <>

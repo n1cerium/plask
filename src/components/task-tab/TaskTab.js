@@ -1,7 +1,9 @@
+import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
 import TaskDatesList from "./TaskDatesList";
 import ButtonOptions from "../buttons/ButtonOptions";
 import TaskListByList from "./TaskListByList";
+import { getDate } from "../../javascript-function/utilities";
 
 const weeks = [
   "Sunday",
@@ -57,7 +59,6 @@ export default function TaskTab({
   }
   function handleCheckedTask(taskID, tasksList) {
     const tasks = tasksList.tasks;
-
     let updatedTask = tasks.map((t) =>
       t.id === taskID ? { ...t, willDelete: !t.willDelete } : t
     );
@@ -77,10 +78,10 @@ export default function TaskTab({
   }
   function handleChangeStatus(currentValue, taskID, tasksList) {
     const tasks = tasksList.tasks;
-
     let updatedTask = tasks.map((t) =>
       t.id === taskID ? { ...t, status: currentValue } : t
     );
+
     updateTasks(tasksList, updatedTask);
   }
 
@@ -90,30 +91,16 @@ export default function TaskTab({
         let currentDate = getDate(index);
         return {
           ...currentTask,
+          id: uuid(),
           date: currentDate.date,
           dayOfTheWeek: currentDate.dayOfTheWeek,
+          allocatedTimeLeft: 960,
+          tasks: [],
         };
       })
     );
-    console.log(tasks);
-  }, []);
+  }, [onUpdateTasks]);
 
-  //this function will return the date and the day of the week
-  function getDate(dayToAdd) {
-    const today = new Date();
-
-    today.setDate(today.getDate() + dayToAdd);
-
-    let month = today.getMonth();
-    let day = today.getDate();
-    let year = today.getFullYear();
-    let dayWeek = today.getDay();
-    console.log(dayWeek);
-    return {
-      date: `${months[month]} ${day}, ${year}`,
-      dayOfTheWeek: weeks[dayWeek],
-    };
-  }
   return (
     <ul id="task-tab">
       {tasks.map((tasks) => (

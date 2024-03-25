@@ -15,7 +15,7 @@ export default function InfoTab({
   const [isHomeOpen, setIsHomeOpen] = useState(true);
   const [isAddTask, setIsAddTask] = useState(false);
   const [isTaskInfo, setIsTaskInfo] = useState(false);
-  console.log(specificDate);
+
   useEffect(() => {
     function updateInfoNav() {
       if (specificDate !== "") {
@@ -47,6 +47,7 @@ export default function InfoTab({
       {isHomeOpen && <InfoHome />}
       {isAddTask && (
         <InfoAddTask
+          tasks={tasks}
           onAddTasks={onAddTasks}
           specificDate={specificDate}
           key={specificDate}
