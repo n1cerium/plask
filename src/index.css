@@ -13,6 +13,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 #navigation {
   height: 3em;
   display: flex;
@@ -78,8 +79,25 @@ code {
   font-weight: bolder;
   justify-self: center;
 }
+#info-home {
+  width: 80%;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+#info-task {
+  display: flex;
+  justify-content: space-between;
+}
+#info-task > span:first-child {
+  font-weight: bold;
+}
+#info-home-quote > p:last-child {
+  text-align: right;
+}
 .info-all-info {
-  justify-self: start;
+  justify-self: flex-start;
   margin-left: -5em;
   display: flex;
   flex-direction: column;
@@ -174,7 +192,7 @@ input::-webkit-inner-spin-button {
 }
 .task-delete-buttons {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-right: 1em;
   gap: 0.8em;
   color: #2f2f2f;
@@ -274,9 +292,11 @@ input::-webkit-inner-spin-button {
 }
 .task-header-allocated {
   font-size: large;
-  align-self: end;
+  align-self: flex-end;
 }
-
+.task-icons {
+  position: relative;
+}
 .task-sort-icon ul {
   position: absolute;
   background-color: #f3f9d2;
@@ -284,8 +304,14 @@ input::-webkit-inner-spin-button {
   border-top: 0px;
   list-style: none;
   padding-left: 0%;
-  width: 5em;
+  width: 7em;
   margin-left: 2em;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.task-sort-icon ul > li:hover {
+  background-color: hsla(0, 0%, 18%, 0.2);
 }
 
 /*Task Header javascript file*/

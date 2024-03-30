@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import InfoTabNav from "./InfoTabNav";
 import InfoHome from "./InfoHome";
 import InfoAddTask from "./InfoAddTask";
@@ -15,6 +15,24 @@ export default function InfoTab({
   const [isHomeOpen, setIsHomeOpen] = useState(true);
   const [isAddTask, setIsAddTask] = useState(false);
   const [isTaskInfo, setIsTaskInfo] = useState(false);
+  const [quote, setQuote] = useState("");
+  const yesterday = useRef(null);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  useEffect(() => {
+    async function getQuote() {
+      const res = await fetch("https://api.quotable.io/quotes/random");
+      const data = await res.json();
+
+      if (today.toDateString() !== yesterday.current) {
+        setQuote(data[0]);
+        yesterday.current = today.toDateString();
+      }
+    }
+
+    getQuote();
+  });
 
   useEffect(() => {
     function updateInfoNav() {
@@ -44,7 +62,7 @@ export default function InfoTab({
         onChangeSpecificDate={onChangeSpecificDate}
         onChangeSpecificTask={onChangeSpecificTask}
       />
-      {isHomeOpen && <InfoHome />}
+      {isHomeOpen && <InfoHome quote={quote} task={tasks[0].tasks} />}
       {isAddTask && (
         <InfoAddTask
           tasks={tasks}

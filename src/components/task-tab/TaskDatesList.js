@@ -11,6 +11,7 @@ export default function TaskDatesList({
   children,
   setShowDelete,
   onGetSpecificTask,
+  onUpdateTasks,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const isRendering = useUnmountedAnim(isOpen, 200);
@@ -34,6 +35,7 @@ export default function TaskDatesList({
         onOpenMain={handleOpenMain}
         onDeleteToggle={handleDeleteToggle}
         onAddTask={handleAddingTask}
+        onUpdateTasks={onUpdateTasks}
       />
       {isRendering && (
         <Tasks className={isOpen ? "task-list-open" : "task-list-close"}>

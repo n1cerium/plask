@@ -5,31 +5,6 @@ import ButtonOptions from "../buttons/ButtonOptions";
 import TaskListByList from "./TaskListByList";
 import { getDate } from "../../javascript-function/utilities";
 
-const weeks = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
 export default function TaskTab({
   tasks,
   onUpdateTasks,
@@ -103,13 +78,14 @@ export default function TaskTab({
 
   return (
     <ul id="task-tab">
-      {tasks.map((tasks) => (
+      {tasks.map((tasks, index) => (
         <TaskDatesList
           tasks={tasks}
-          key={tasks.id}
+          key={index}
           onGetDate={onGetDate}
           onGetSpecificTask={onGetSpecificTask}
           setShowDelete={setShowDelete}
+          onUpdateTasks={onUpdateTasks}
         >
           <TaskListByList
             tasks={tasks}

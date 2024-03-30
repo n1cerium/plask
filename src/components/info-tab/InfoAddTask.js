@@ -78,7 +78,6 @@ export default function AddTask({ tasks, onAddTasks, specificDate }) {
     onAddTasks((allTasks) =>
       allTasks.map((t) => {
         const taskCurrentDate = toDate(t.date);
-
         if (
           taskCurrentDate <= endFullDate &&
           t.allocatedTimeLeft - task.allocatedTime >= 0

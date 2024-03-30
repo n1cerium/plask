@@ -8,6 +8,7 @@ export default function Main() {
   );
   const [specifiedDate, setSpecifiedDate] = useState("");
   const [specificTask, setSpecificTask] = useState({});
+
   return (
     <main id="main-content">
       <InfoTab
