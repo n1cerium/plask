@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InfoTab from "./info-tab/InfoTab";
 import TaskTab from "./task-tab/TaskTab";
 
 export default function Main() {
-  const [tasks, setTasks] = useState(
-    Array.from({ length: 15 }, (_, i) => i + 1)
-  );
+  const [tasks, setTasks] = useState(function () {
+    const storedTasks = localStorage.getItem("tasks");
+    return JSON.parse(storedTasks);
+  });
   const [specifiedDate, setSpecifiedDate] = useState("");
   const [specificTask, setSpecificTask] = useState({});
+  console.log(JSON.parse(localStorage.getItem("tasks")));
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <main id="main-content">

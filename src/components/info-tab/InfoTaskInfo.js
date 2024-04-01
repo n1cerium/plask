@@ -3,7 +3,7 @@ import InfoBox from "./InfoBox";
 export default function InfoTaskInfo({ specificTask }) {
   return (
     <InfoBox className="info-task" title="Task Information">
-      {specificTask ? (
+      {Object.keys(specificTask).length !== 0 ? (
         <section className="info-all-info">
           <span>
             <b>Name: </b> {specificTask.name}

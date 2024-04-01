@@ -61,19 +61,24 @@ export default function TaskTab({
   }
 
   useEffect(() => {
-    onUpdateTasks((ts) =>
-      ts.map((currentTask, index) => {
-        let currentDate = getDate(index);
-        return {
-          ...currentTask,
-          id: uuid(),
-          date: currentDate.date,
-          dayOfTheWeek: currentDate.dayOfTheWeek,
-          allocatedTimeLeft: 960,
-          tasks: [],
-        };
-      })
-    );
+    if (localStorage.getItem("isTasksInitialized") !== "yes") {
+      onUpdateTasks(
+        Array.from({ length: 15 }, (_, i) => i + 1).map(
+          (currentTask, index) => {
+            let currentDate = getDate(index);
+            return {
+              ...currentTask,
+              id: uuid(),
+              date: currentDate.date,
+              dayOfTheWeek: currentDate.dayOfTheWeek,
+              allocatedTimeLeft: 960,
+              tasks: [],
+            };
+          }
+        )
+      );
+      localStorage.setItem("isTasksInitialized", "yes");
+    }
   }, [onUpdateTasks]);
 
   return (

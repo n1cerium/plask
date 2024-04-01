@@ -15,8 +15,11 @@ export default function InfoTab({
   const [isHomeOpen, setIsHomeOpen] = useState(true);
   const [isAddTask, setIsAddTask] = useState(false);
   const [isTaskInfo, setIsTaskInfo] = useState(false);
-  const [quote, setQuote] = useState("");
-  const yesterday = useRef(null);
+  const [quote, setQuote] = useState(function () {
+    const quoteStorage = JSON.parse(localStorage.getItem("quote"));
+    return quoteStorage;
+  });
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -25,9 +28,9 @@ export default function InfoTab({
       const res = await fetch("https://api.quotable.io/quotes/random");
       const data = await res.json();
 
-      if (today.toDateString() !== yesterday.current) {
+      if (today.toDateString() !== localStorage.getItem("yesterday")) {
         setQuote(data[0]);
-        yesterday.current = today.toDateString();
+        localStorage.setItem("yesterday", today.toDateString());
       }
     }
 
@@ -48,6 +51,8 @@ export default function InfoTab({
         setIsAddTask(false);
         setIsHomeOpen(false);
         setIsTaskInfo(true);
+
+        return;
       }
     }
 
