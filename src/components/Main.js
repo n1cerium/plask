@@ -9,7 +9,7 @@ export default function Main() {
   });
   const [specifiedDate, setSpecifiedDate] = useState("");
   const [specificTask, setSpecificTask] = useState({});
-  console.log(JSON.parse(localStorage.getItem("tasks")));
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);

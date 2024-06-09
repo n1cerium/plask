@@ -1,7 +1,6 @@
 import InfoBox from "./InfoBox";
 
 export default function InfoHome({ quote, task }) {
-  console.log(task);
   return (
     <InfoBox className="info-task" title="Daily Quote And Tasks">
       <section id="info-home">

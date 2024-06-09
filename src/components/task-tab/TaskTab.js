@@ -11,8 +11,6 @@ export default function TaskTab({
   onGetDate,
   onGetSpecificTask,
 }) {
-  //console.log(getTodayDate(0));
-
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
