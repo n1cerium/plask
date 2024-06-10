@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/plask/static/css/main.986eabf1.css",
+    "main.js": "/plask/static/js/main.6b39c530.js",
+    "index.html": "/plask/index.html",
+    "main.986eabf1.css.map": "/plask/static/css/main.986eabf1.css.map",
+    "main.6b39c530.js.map": "/plask/static/js/main.6b39c530.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.986eabf1.css",
+    "static/js/main.6b39c530.js"
+  ]
+}
