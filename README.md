@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Plask
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Plask is a web application where users can add task for specific days. It is only limited to show only within 15 days from the current day. Users can also delete tasks or mark the task as complete, in progress, or ongoing. When adding a task, the users can also add the priority level and when the task will start or end. The app is published through [Netlify](https://www.netlify.com/?utm_medium=paid_search&utm_source=google&utm_campaign=GS_Connect:+Netlify+Brand&utm_term=netlify)
 
-## Available Scripts
+### Technologies (Frameworks/Libraries)
+* Visual Studio Code
+* React.js
+* Font Awesome
+* Netlify
 
-In the project directory, you can run:
+### Launch Site: [Plask](https://plask.netlify.app/)
 
-### `npm start`
+### Images
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Home Page where it dissplays the quote of the day and the upcoming tasks
+![image](https://github.com/n1cerium/plask/assets/114702605/4fcb1d2d-785b-4aad-baf2-914297f83d77)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Users can add a task with a name, description, category, how many minutes the users need to do the task, priority level and the start and due date
+![image](https://github.com/n1cerium/plask/assets/114702605/20db732a-c1db-4b88-b0fe-82db09da638f)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Users can also view the task they added by clicking the specific task
+![image](https://github.com/n1cerium/plask/assets/114702605/a5fd1cb6-d1bb-4f3b-91e2-0d9b83f4a61c)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/n1cerium/plask/assets/114702605/e52db9fb-dde5-4702-a2c3-d5679e962d0b)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Guess the Rank Page where users has to either guess the top # of the anime based on either popularity, favorites or rank category. For every wrong guesses, it will prompt an image if they guess way too high or way too close to the actual value
+![image](https://github.com/n1cerium/quizime/assets/114702605/123d2d75-b62c-454d-8285-235881dc76a1)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Guess the Theme Page where users are given a short audio to guess the name of the anime theme sond, and for every wrong guesses, the duration of the audio increases by a bit second
+![image](https://github.com/n1cerium/quizime/assets/114702605/f88c4d9a-362c-4f7a-8df7-634d254c5abf)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Guess the Seiyuu (Voice Actor/Actress) where users has to guess who the seiyuu is based on the images given, and users are given by one image and for every wrong answers, another image is given
+(Getting the data for this is taking too long because apparently, there is something wrong on the server)
+![image](https://github.com/n1cerium/quizime/assets/114702605/6cb28faf-6c96-4ce2-b124-5adca3080d75)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### There is another page where it just displays random page from the five quiz pages
